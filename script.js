@@ -35,8 +35,7 @@ const winningConditions = [
 
 // Click Listeners
 topLeftBox.addEventListener('click', ()=> {
-    topLeftBox.querySelector('.x').toggleAttribute('display')
-    
+    topLeftBox.querySelector('.x').style.display = 'block'
     
 })
 topMidBox.addEventListener('click', ()=> {
