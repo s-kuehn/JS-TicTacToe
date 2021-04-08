@@ -18,6 +18,19 @@ const boxes = [topLeftBox, topMidBox, topRightBox, midLeftBox,
 
 let isXTurn = true;
 
+
+function toggleTurn (x,o) {
+    if (isXTurn) {
+        x.style.display = 'block';
+        o.style.display = 'none';
+        isXTurn = false;
+       } else {
+        o.style.display = 'block';
+        x.style.display = 'none';
+        isXTurn = true;
+       }
+}
+
 // Winning Conditions
 const winningConditions = [
     [0,1,2],
@@ -32,32 +45,49 @@ const winningConditions = [
 
 // Click Listeners
 topLeftBox.addEventListener('click', ()=> {
-    topLeftBox.querySelector('.x').style.display = 'block'
+    let x = topLeftBox.querySelector('.x')
+    let o = topLeftBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 topMidBox.addEventListener('click', ()=> {
-    alert('clicked');
-    // isXTurn ?  : 
+    let x = topMidBox.querySelector('.x')
+    let o = topMidBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 topRightBox.addEventListener('click', ()=> {
-    topRightBox.querySelector('.x').style.display = 'block'
+    let x = topRightBox.querySelector('.x')
+    let o = topRightBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 midLeftBox.addEventListener('click', ()=> {
-    alert('clicked');
+    let x = midLeftBox.querySelector('.x')
+    let o = midLeftBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 midMidBox.addEventListener('click', ()=> {
-    alert('clicked');
+    let x = midMidBox.querySelector('.x')
+    let o = midMidBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 midRightBox.addEventListener('click', ()=> {
-    alert('clicked');
+    let x = midRightBox.querySelector('.x')
+    let o = midRightBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 botLeftBox.addEventListener('click', ()=> {
-    alert('clicked');
+    let x = botLeftBox.querySelector('.x')
+    let o = botLeftBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 botMidBox.addEventListener('click', ()=> {
-    alert('clicked');
+    let x = botMidBox.querySelector('.x')
+    let o = botMidBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 botRightBox.addEventListener('click', ()=> {
-    alert('clicked');
+    let x = botRightBox.querySelector('.x')
+    let o = botRightBox.querySelector('.o')
+    toggleTurn(x,o);
 })
 
 document.querySelector('.new-game').addEventListener('click', ()=> {
