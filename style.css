@@ -82,6 +82,15 @@ h1 {
     border-radius: 5px;
 }
 
+.new-game button:active {
+    width: 185px;
+    height: 65px;
+}
+
+.new-game button:focus {
+    outline: 0;
+}
+
 .o {
     top: 5%;
     left: 25%;
