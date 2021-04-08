@@ -13,8 +13,10 @@ const botLeftBox = document.querySelector('#bot-left');
 const botMidBox = document.querySelector('#bot-mid');
 const botRightBox = document.querySelector('#bot-right');
 
-let isXTurn = false;
-let isOTurn = false;
+const boxes = [topLeftBox, topMidBox, topRightBox, midLeftBox,
+    midMidBox, midRightBox, botLeftBox, botMidBox, botRightBox]
+
+let isXTurn = true;
 
 // Winning Conditions
 const winningConditions = [
@@ -30,12 +32,13 @@ const winningConditions = [
 
 // Click Listeners
 topLeftBox.addEventListener('click', ()=> {
-    let div = document.createElement('div');
+    topLeftBox.querySelector('.x').toggleAttribute('display')
     
     
 })
 topMidBox.addEventListener('click', ()=> {
     alert('clicked');
+    // isXTurn ?  : 
 })
 topRightBox.addEventListener('click', ()=> {
     alert('clicked');
@@ -57,6 +60,13 @@ botMidBox.addEventListener('click', ()=> {
 })
 botRightBox.addEventListener('click', ()=> {
     alert('clicked');
+})
+
+document.querySelector('.new-game').addEventListener('click', ()=> {
+    for (let i = 0; i<boxes.length; i++) {
+        boxes[i].querySelector('.x').style.display = 'none'
+        boxes[i].querySelector('.o').style.display = 'none'
+    }
 })
 
 // Check if game is over
