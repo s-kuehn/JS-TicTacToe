@@ -13,9 +13,6 @@ const botLeftBox = document.querySelector('#bot-left');
 const botMidBox = document.querySelector('#bot-mid');
 const botRightBox = document.querySelector('#bot-right');
 
-// const x = document.querySelector('.x')
-// const o = document.querySelectorAll('.o')
-
 const boxes = [topLeftBox, topMidBox, topRightBox, midLeftBox,
     midMidBox, midRightBox, botLeftBox, botMidBox, botRightBox]
 
@@ -36,7 +33,6 @@ const winningConditions = [
 // Click Listeners
 topLeftBox.addEventListener('click', ()=> {
     topLeftBox.querySelector('.x').style.display = 'block'
-    
 })
 topMidBox.addEventListener('click', ()=> {
     alert('clicked');
