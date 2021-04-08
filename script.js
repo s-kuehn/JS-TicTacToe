@@ -18,7 +18,6 @@ const boxes = [topLeftBox, topMidBox, topRightBox, midLeftBox,
 
 let isXTurn = true;
 
-<<<<<<< HEAD
 
 function toggleTurn (x,o,location) {
     if (x.style.display !== 'block' && o.style.display !== 'block') {
@@ -34,20 +33,6 @@ function toggleTurn (x,o,location) {
             isXTurn = true;
            }
     }
-=======
-function toggleTurn (x,o,location) {
-    if (isXTurn) {
-        board[location[0]][location[1]] = 'x'
-        x.style.display = 'block';
-        o.style.display = 'none';
-        isXTurn = false;
-       } else {
-        board[location[0]][location[1]] = 'o'
-        o.style.display = 'block';
-        x.style.display = 'none';
-        isXTurn = true;
-       }
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 }
 
 const board = [
@@ -56,11 +41,6 @@ const board = [
     ['','',''],
 ]
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 // Winning Conditions
 const winningConditions = [
     [[0,0],[0,1],[0,2]],
@@ -99,91 +79,55 @@ topLeftBox.addEventListener('click', ()=> {
     let x = topLeftBox.querySelector('.x')
     let o = topLeftBox.querySelector('.o')
     toggleTurn(x,o,[0,0]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 topMidBox.addEventListener('click', ()=> {
     let x = topMidBox.querySelector('.x')
     let o = topMidBox.querySelector('.o')
     toggleTurn(x,o,[0,1]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 topRightBox.addEventListener('click', ()=> {
     let x = topRightBox.querySelector('.x')
     let o = topRightBox.querySelector('.o')
     toggleTurn(x,o,[0,2]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 midLeftBox.addEventListener('click', ()=> {
     let x = midLeftBox.querySelector('.x')
     let o = midLeftBox.querySelector('.o')
     toggleTurn(x,o,[1,0]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 midMidBox.addEventListener('click', ()=> {
     let x = midMidBox.querySelector('.x')
     let o = midMidBox.querySelector('.o')
     toggleTurn(x,o,[1,1]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 midRightBox.addEventListener('click', ()=> {
     let x = midRightBox.querySelector('.x')
     let o = midRightBox.querySelector('.o')
     toggleTurn(x,o,[1,2]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 botLeftBox.addEventListener('click', ()=> {
     let x = botLeftBox.querySelector('.x')
     let o = botLeftBox.querySelector('.o')
     toggleTurn(x,o,[2,0]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 botMidBox.addEventListener('click', ()=> {
     let x = botMidBox.querySelector('.x')
     let o = botMidBox.querySelector('.o')
     toggleTurn(x,o,[2,1]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 botRightBox.addEventListener('click', ()=> {
     let x = botRightBox.querySelector('.x')
     let o = botRightBox.querySelector('.o')
     toggleTurn(x,o,[2,2]);
-<<<<<<< HEAD
     checkForWin()
-=======
-    console.log(board)
->>>>>>> 47d89cd637ebb8959c7c08f5caab0bffb3a189f9
 })
 
 document.querySelector('.new-game').addEventListener('click', ()=> {
