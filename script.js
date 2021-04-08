@@ -13,9 +13,14 @@ const botLeftBox = document.querySelector('#bot-left');
 const botMidBox = document.querySelector('#bot-mid');
 const botRightBox = document.querySelector('#bot-right');
 
+let isXTurn = false;
+let isOTurn = false;
+
 // Click Listeners
 topLeftBox.addEventListener('click', ()=> {
-    alert('clicked');
+    let div = document.createElement('div');
+    
+    
 })
 topMidBox.addEventListener('click', ()=> {
     alert('clicked');
