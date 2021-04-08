@@ -13,6 +13,12 @@ const botLeftBox = document.querySelector('#bot-left');
 const botMidBox = document.querySelector('#bot-mid');
 const botRightBox = document.querySelector('#bot-right');
 
+// const x = document.querySelector('.x')
+// const o = document.querySelectorAll('.o')
+
+
+
+
 let isXTurn = false;
 let isOTurn = false;
 
@@ -30,15 +36,13 @@ const winningConditions = [
 
 // Click Listeners
 topLeftBox.addEventListener('click', ()=> {
-    let div = document.createElement('div');
-    
-    
+    topLeftBox.querySelector('.x').style.display = 'block'
 })
 topMidBox.addEventListener('click', ()=> {
     alert('clicked');
 })
 topRightBox.addEventListener('click', ()=> {
-    alert('clicked');
+    topRightBox.querySelector('.x').style.display = 'block'
 })
 midLeftBox.addEventListener('click', ()=> {
     alert('clicked');
