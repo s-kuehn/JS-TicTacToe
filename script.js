@@ -18,30 +18,13 @@ const winnerText = document.querySelector('#winner');
 const boxes = [topLeftBox, topMidBox, topRightBox, midLeftBox,
     midMidBox, midRightBox, botLeftBox, botMidBox, botRightBox]
 
+const newGame = document.querySelector('.new-game');
+
 let isXTurn = true;
 let gameOver = false;
 
 let player = 'x'
 
-function toggleTurn (x,o,location) {
-    if (x.style.display !== 'block' && o.style.display !== 'block') {
-        if (isXTurn) {
-            board[location[0]][location[1]] = 'x'
-            x.style.display = 'block';
-            o.style.display = 'none';
-            checkForWin(player)
-            isXTurn = false;
-            player = 'o';
-           } else {
-            board[location[0]][location[1]] = 'o'
-            o.style.display = 'block';
-            x.style.display = 'none';
-            checkForWin(player)
-            isXTurn = true;
-            player = 'x';
-           }
-    }
-}
 
 let board = [
     ['','',''],
@@ -49,6 +32,7 @@ let board = [
     ['','',''],
 ]
 
+// Locations of specific squares clicked on, maps to board array
 const locations = [
     [0,0],
     [0,1],
@@ -73,6 +57,25 @@ const winningConditions = [
     [[2,0],[2,1],[2,2]]
 ]
 
+function toggleTurn (x,o,location) {
+    if (x.style.display !== 'block' && o.style.display !== 'block') {
+        if (isXTurn) {
+            board[location[0]][location[1]] = 'x'
+            x.style.display = 'block';
+            o.style.display = 'none';
+            checkForWin(player)
+            isXTurn = false;
+            player = 'o';
+           } else {
+            board[location[0]][location[1]] = 'o'
+            o.style.display = 'block';
+            x.style.display = 'none';
+            checkForWin(player)
+            isXTurn = true;
+            player = 'x';
+           }
+    }
+}
 
 function checkForWin(player) {
     console.log(player)
@@ -83,7 +86,7 @@ function checkForWin(player) {
         board[winningConditions[i][2][0]][winningConditions[i][2][1]] === player){
 
             gameOver = true;
-            winnerText.textContent = `${player.toUpperCase()}'s`;
+            winnerText.textContent = `Winner: ${player.toUpperCase()}'s`;
             console.log(`${player}'s win!`);
             break;
 
@@ -96,7 +99,7 @@ function checkForWin(player) {
             board[2][0].length > 0 && board[2][1].length > 0 && board[2][2].length > 0) {
     
             gameOver = true;
-            winnerText.textContent = `TIE`;
+            winnerText.textContent = `It's a TIE!`;
             console.log("It's a tie!")
         }
     }
@@ -115,7 +118,7 @@ for (let box = 0; box<boxes.length; box++) {
     })
 }
 
-document.querySelector('.new-game').addEventListener('click', ()=> {
+newGame.addEventListener('click', ()=> {
     for (let i = 0; i<boxes.length; i++) {
         boxes[i].querySelector('.x').style.display = 'none'
         boxes[i].querySelector('.o').style.display = 'none'
@@ -125,6 +128,6 @@ document.querySelector('.new-game').addEventListener('click', ()=> {
         ['','',''],
         ['','',''],
     ]
-    winnerText.textContent = '';
+    winnerText.textContent = 'Winner:';
     gameOver = false;
 })
