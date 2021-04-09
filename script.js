@@ -87,7 +87,7 @@ function toggleTurn (x,o,location) {
 
 function checkForWin(player) {
     console.log(player)
-    for (let i = 0; i<winningConditions.length; i++) {
+    for (let i = 0; i < winningConditions.length; i++) {
 
         if (board[winningConditions[i][0][0]][winningConditions[i][0][1]] === player &&
         board[winningConditions[i][1][0]][winningConditions[i][1][1]] === player &&
@@ -102,9 +102,9 @@ function checkForWin(player) {
     }
 
     if (!gameOver) {
-        if (board[0][0].length > 0 && board[0][1].length > 0 && board[0][2].length > 0 &&
-            board[1][0].length > 0 && board[1][1].length > 0 && board[1][2].length > 0 &&
-            board[2][0].length > 0 && board[2][1].length > 0 && board[2][2].length > 0) {
+        if (board[0][0] && board[0][1] && board[0][2] &&
+            board[1][0] && board[1][1] && board[1][2] &&
+            board[2][0] && board[2][1] && board[2][2]) {
     
             gameOver = true;
             winnerText.textContent = `It's a TIE!`;
@@ -114,7 +114,7 @@ function checkForWin(player) {
 }
 
 // Click Listeners
-for (let box = 0; box<boxes.length; box++) {
+for (let box = 0; box < boxes.length; box++) {
     boxes[box].addEventListener('click', () => {
         if (gameOver === false) {
             console.log(gameOver)
@@ -127,7 +127,7 @@ for (let box = 0; box<boxes.length; box++) {
 }
 
 newGame.addEventListener('click', ()=> {
-    for (let i = 0; i<boxes.length; i++) {
+    for (let i = 0; i < boxes.length; i++) {
         boxes[i].querySelector('.x').style.display = 'none'
         boxes[i].querySelector('.o').style.display = 'none'
     }
