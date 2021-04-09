@@ -57,6 +57,8 @@ const winningConditions = [
     [[2,0],[2,1],[2,2]]
 ]
 
+winnerText.textContent = `It's ${player.toUpperCase()}'s turn!`;
+
 function toggleTurn (x,o,location) {
     if (x.style.display !== 'block' && o.style.display !== 'block') {
         if (isXTurn) {
@@ -66,6 +68,9 @@ function toggleTurn (x,o,location) {
             checkForWin(player)
             isXTurn = false;
             player = 'o';
+            if(gameOver === false) {
+                winnerText.textContent = `It's ${player.toUpperCase()}'s turn!`;
+            }
            } else {
             board[location[0]][location[1]] = 'o'
             o.style.display = 'block';
@@ -73,6 +78,9 @@ function toggleTurn (x,o,location) {
             checkForWin(player)
             isXTurn = true;
             player = 'x';
+            if(gameOver === false) {
+                winnerText.textContent = `It's ${player.toUpperCase()}'s turn!`;
+            }
            }
     }
 }
@@ -87,7 +95,7 @@ function checkForWin(player) {
 
             gameOver = true;
             winnerText.textContent = `Winner: ${player.toUpperCase()}'s`;
-            console.log(`${player}'s win!`);
+            console.log(`${player.toUpperCase}'s win!`);
             break;
 
         }
@@ -128,6 +136,6 @@ newGame.addEventListener('click', ()=> {
         ['','',''],
         ['','',''],
     ]
-    winnerText.textContent = 'Winner:';
+    winnerText.textContent = `It's ${player.toUpperCase()}'s turn!`;
     gameOver = false;
 })
