@@ -13,11 +13,15 @@ const botLeftBox = document.querySelector('#bot-left');
 const botMidBox = document.querySelector('#bot-mid');
 const botRightBox = document.querySelector('#bot-right');
 
+const winnerText = document.querySelector('#winner');
+
 const boxes = [topLeftBox, topMidBox, topRightBox, midLeftBox,
     midMidBox, midRightBox, botLeftBox, botMidBox, botRightBox]
 
 let isXTurn = true;
+let gameOver = false;
 
+let player = 'x'
 
 function toggleTurn (x,o,location) {
     if (x.style.display !== 'block' && o.style.display !== 'block') {
@@ -25,20 +29,36 @@ function toggleTurn (x,o,location) {
             board[location[0]][location[1]] = 'x'
             x.style.display = 'block';
             o.style.display = 'none';
+            checkForWin(player)
             isXTurn = false;
+            player = 'o';
            } else {
             board[location[0]][location[1]] = 'o'
             o.style.display = 'block';
             x.style.display = 'none';
+            checkForWin(player)
             isXTurn = true;
+            player = 'x';
            }
     }
 }
 
-const board = [
+let board = [
     ['','',''],
     ['','',''],
     ['','',''],
+]
+
+const locations = [
+    [0,0],
+    [0,1],
+    [0,2],
+    [1,0],
+    [1,1],
+    [1,2],
+    [2,0],
+    [2,1],
+    [2,2],
 ]
 
 // Winning Conditions
@@ -53,91 +73,58 @@ const winningConditions = [
     [[2,0],[2,1],[2,2]]
 ]
 
-function checkForWin() {
-    for (let i = 0; i<winningConditions.length; i++) {
-        // console.log(winningConditions[i][0], winningConditions[i][1], winningConditions[i][2]);
-        // console.log(winningConditions[i][0][0],winningConditions[i][0][1])
-        // console.log(board[winningConditions[i][0][0]][winningConditions[i][0][1]])
-        // board[0][0]
-        for (let j = 0; i<winningConditions[i].length; j++) {
-            if (board[winningConditions[i][j][0]][winningConditions[i][j][1]] === 'x'){
-                console.log('TEST!!!')
-            }
-        }
 
-        // console.log(board[winningConditions[i][0][0]],winningConditions[i][0][1])
+function checkForWin(player) {
+    console.log(player)
+    for (let i = 0; i<winningConditions.length; i++) {
+
+        if (board[winningConditions[i][0][0]][winningConditions[i][0][1]] === player &&
+        board[winningConditions[i][1][0]][winningConditions[i][1][1]] === player &&
+        board[winningConditions[i][2][0]][winningConditions[i][2][1]] === player){
+
+            gameOver = true;
+            winnerText.textContent = `${player.toUpperCase()}'s`;
+            console.log(`${player}'s win!`);
+            break;
+
+        }
+    }
+
+    if (!gameOver) {
+        if (board[0][0].length > 0 && board[0][1].length > 0 && board[0][2].length > 0 &&
+            board[1][0].length > 0 && board[1][1].length > 0 && board[1][2].length > 0 &&
+            board[2][0].length > 0 && board[2][1].length > 0 && board[2][2].length > 0) {
     
-        // for (let j = 0; j<board.length; j++) {
-        //     if ()
-        //     console.log(board[j]);
-        // }
+            gameOver = true;
+            winnerText.textContent = `TIE`;
+            console.log("It's a tie!")
+        }
     }
 }
 
 // Click Listeners
-topLeftBox.addEventListener('click', ()=> {
-    let x = topLeftBox.querySelector('.x')
-    let o = topLeftBox.querySelector('.o')
-    toggleTurn(x,o,[0,0]);
-    checkForWin()
-})
-topMidBox.addEventListener('click', ()=> {
-    let x = topMidBox.querySelector('.x')
-    let o = topMidBox.querySelector('.o')
-    toggleTurn(x,o,[0,1]);
-    checkForWin()
-})
-topRightBox.addEventListener('click', ()=> {
-    let x = topRightBox.querySelector('.x')
-    let o = topRightBox.querySelector('.o')
-    toggleTurn(x,o,[0,2]);
-    checkForWin()
-})
-midLeftBox.addEventListener('click', ()=> {
-    let x = midLeftBox.querySelector('.x')
-    let o = midLeftBox.querySelector('.o')
-    toggleTurn(x,o,[1,0]);
-    checkForWin()
-})
-midMidBox.addEventListener('click', ()=> {
-    let x = midMidBox.querySelector('.x')
-    let o = midMidBox.querySelector('.o')
-    toggleTurn(x,o,[1,1]);
-    checkForWin()
-})
-midRightBox.addEventListener('click', ()=> {
-    let x = midRightBox.querySelector('.x')
-    let o = midRightBox.querySelector('.o')
-    toggleTurn(x,o,[1,2]);
-    checkForWin()
-})
-botLeftBox.addEventListener('click', ()=> {
-    let x = botLeftBox.querySelector('.x')
-    let o = botLeftBox.querySelector('.o')
-    toggleTurn(x,o,[2,0]);
-    checkForWin()
-})
-botMidBox.addEventListener('click', ()=> {
-    let x = botMidBox.querySelector('.x')
-    let o = botMidBox.querySelector('.o')
-    toggleTurn(x,o,[2,1]);
-    checkForWin()
-})
-botRightBox.addEventListener('click', ()=> {
-    let x = botRightBox.querySelector('.x')
-    let o = botRightBox.querySelector('.o')
-    toggleTurn(x,o,[2,2]);
-    checkForWin()
-})
+for (let box = 0; box<boxes.length; box++) {
+    boxes[box].addEventListener('click', () => {
+        if (gameOver === false) {
+            console.log(gameOver)
+            let x = boxes[box].querySelector('.x')
+            let o = boxes[box].querySelector('.o')
+            toggleTurn(x,o,locations[box]);
+            // checkForWin(player)
+        }
+    })
+}
 
 document.querySelector('.new-game').addEventListener('click', ()=> {
     for (let i = 0; i<boxes.length; i++) {
         boxes[i].querySelector('.x').style.display = 'none'
         boxes[i].querySelector('.o').style.display = 'none'
     }
+    board = [
+        ['','',''],
+        ['','',''],
+        ['','',''],
+    ]
+    winnerText.textContent = '';
+    gameOver = false;
 })
-
-// Check if game is over
-// Check if box is empty
-// Rotate between "X"s and "O"s every other turn
-// Start with "X"s
